@@ -1,9 +1,9 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
 export GPG_TTY=$(tty)
 # If you come from bash you might have to change your $PATH.
@@ -38,7 +38,7 @@ export FZF_DEFAULT_OPTS="
 "
 
 # source <(kubectl completion zsh)
-# ZSH_THEME=powerlevel10k/powerlevel10k
+ZSH_THEME=powerlevel10k/powerlevel10k
 # ZSH_THEME="spaceship"
 HYPHEN_INSENSITIVE="true"
 
@@ -60,8 +60,7 @@ ZSH_ALIAS_FINDER_AUTOMATIC=true
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 
-plugins=(git gitignore docker docker-compose helm colored-man-pages command-not-found zsh-autosuggestions fast-syntax-highlighting \
-        ubuntu zsh-bash-completions-fallback z sudo fzf alias-finder copydir terraform genpass cp extract)
+plugins=(git gitignore docker docker-compose helm colored-man-pages command-not-found zsh-autosuggestions ubuntu zsh-bash-completions-fallback z sudo fzf alias-finder terraform genpass cp extract fast-syntax-highlighting)
 
 # ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 source $ZSH/oh-my-zsh.sh
@@ -72,7 +71,7 @@ source $ZSH/oh-my-zsh.sh
 
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 complete -o nospace -C /usr/bin/vault vault
 # source /usr/share/bash-completion/completions/az
-eval "$(starship init zsh)"
+# eval "$(starship init zsh)"
